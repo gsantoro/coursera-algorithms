@@ -1,15 +1,12 @@
 package unionfind;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
- * Created by gsantoro on 15/04/15.
+ * Created by gsantoro on 16/04/15.
  */
-public class UnionFind {
+public class QuickUnion {
     protected int[] data;
 
-    public UnionFind(int n) {
+    public QuickUnion(int n) {
         data = new int[n];
 
         for (int i=0; i < data.length; i++) {
@@ -17,34 +14,39 @@ public class UnionFind {
         }
     }
 
+    protected int root(int p) {
+        int i = p;
+        while (data[i] != i)
+            i = data[i];
+        return i;
+    }
+
     public boolean connected(int p, int q) {
-        return data[p] == data[q];
+        return root(p) == root(q);
     }
 
     public void union(int p, int q) {
-        int pid = data[p];
-        int qid = data[q];
+        int pr = root(p);
+        int qr = root(q);
 
-        for (int i=0; i < data.length; i++) {
-            if (data[i] == pid) {
-                data[i] = qid;
-            }
-        }
+        data[pr] = qr;
     }
 
     public int find(int p) {
-        return data[p];
+        return root(p);
     }
 
     public int count() {
-        Set set = new HashSet<Integer>();
+        int count = 0;
 
-        for(int d: data) {
-            set.add(d);
+        for (int i=0; i < data.length; i++) {
+            if (data[i] == i) {
+                count++;
+            }
         }
-
-        return set.size();
+        return count;
     }
+
 
     @Override
     public String toString() {
