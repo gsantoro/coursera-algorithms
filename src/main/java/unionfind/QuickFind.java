@@ -1,8 +1,5 @@
 package unionfind;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Created by gsantoro on 15/04/15.
  */
@@ -12,7 +9,7 @@ public class QuickFind {
     public QuickFind(int n) {
         data = new int[n];
 
-        for (int i=0; i < data.length; i++) {
+        for (int i = 0; i < data.length; i++) {
             data[i] = i;
         }
     }
@@ -25,7 +22,7 @@ public class QuickFind {
         int pid = data[p];
         int qid = data[q];
 
-        for (int i=0; i < data.length; i++) {
+        for (int i = 0; i < data.length; i++) {
             if (data[i] == pid) {
                 data[i] = qid;
             }
@@ -37,19 +34,21 @@ public class QuickFind {
     }
 
     public int count() {
-        Set set = new HashSet<Integer>();
+        int count = 0;
 
-        for(int d: data) {
-            set.add(d);
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] == i) {
+                count++;
+            }
         }
 
-        return set.size();
+        return count;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int i: data) {
+        for (int i : data) {
             sb.append(String.format("%d ", i));
         }
 

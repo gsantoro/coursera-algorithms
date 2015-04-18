@@ -1,22 +1,27 @@
 package unionfind;
 
 /**
- * Created by gsantoro on 16/04/15.
+ * Created by gsantoro on 18/04/15.
  */
-public class QuickUnion {
+public class WeightedQuickUnion {
     protected int[] data;
+    protected int[] weight;
 
-    public QuickUnion(int n) {
+    public WeightedQuickUnion(int n) {
         data = new int[n];
+        weight = new int[n];
 
-        for (int i = 0; i < data.length; i++) {
+        for (int i = 0; i < n; i++) {
             data[i] = i;
+            weight[i] = 1;
         }
     }
 
-    protected int root(int i) {
-        while (data[i] != i)
+    private int root(int i) {
+        while (data[i] != i) {
             i = data[i];
+        }
+
         return i;
     }
 
@@ -28,7 +33,14 @@ public class QuickUnion {
         int pr = root(p);
         int qr = root(q);
 
-        data[pr] = qr;
+        if (weight[pr] <= weight[qr]) {
+            data[pr] = qr;
+            weight[qr] += weight[pr];
+        }
+        else {
+            data[qr] = pr;
+            weight[pr] += weight[qr];
+        }
     }
 
     public int find(int p) {
@@ -46,11 +58,10 @@ public class QuickUnion {
         return count;
     }
 
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i : data) {
+        for (int i: data) {
             sb.append(String.format("%d ", i));
         }
 
