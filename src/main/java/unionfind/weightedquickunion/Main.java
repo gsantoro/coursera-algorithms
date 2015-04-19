@@ -1,6 +1,6 @@
 package unionfind.weightedquickunion;
 
-import utils.StdIn;
+import unionfind.AbstractMain;
 
 import java.io.IOException;
 
@@ -11,20 +11,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         WeightedQuickUnion qf = new WeightedQuickUnion(10);
 
-        System.out.println(String.format("Original   : %s", qf));
-
-        StdIn stdIn = new StdIn();
-        stdIn.init("/quickfind.txt");
-
-        while (!stdIn.isEmpty()) {
-            Integer[] line = stdIn.readIntegers();
-
-            qf.union(line[0], line[1]);
-            System.out.println(String.format("union(%d, %d): %s", line[0], line[1], qf));
-        }
-
-        System.out.println(String.format("How many components: %d", qf.count()));
-        System.out.println(String.format("Which component for 2: %d", qf.find(2)));
-        System.out.println(String.format("Is 1 connected to 4: %b", qf.connected(1, 4)));
+        AbstractMain main = new AbstractMain();
+        main.test(qf);
     }
 }

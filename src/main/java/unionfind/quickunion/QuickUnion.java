@@ -1,11 +1,11 @@
 package unionfind.quickunion;
 
+import unionfind.AbstractQuickFind;
+
 /**
  * Created by gsantoro on 16/04/15.
  */
-public class QuickUnion {
-    protected int[] data;
-
+public class QuickUnion extends AbstractQuickFind {
     public QuickUnion(int n) {
         data = new int[n];
 
@@ -20,10 +20,12 @@ public class QuickUnion {
         return i;
     }
 
+    @Override
     public boolean connected(int p, int q) {
         return root(p) == root(q);
     }
 
+    @Override
     public void union(int p, int q) {
         int pr = root(p);
         int qr = root(q);
@@ -31,29 +33,8 @@ public class QuickUnion {
         data[pr] = qr;
     }
 
+    @Override
     public int find(int p) {
         return root(p);
-    }
-
-    public int count() {
-        int count = 0;
-
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] == i) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i : data) {
-            sb.append(String.format("%d ", i));
-        }
-
-        return sb.toString();
     }
 }
