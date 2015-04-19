@@ -1,6 +1,6 @@
 package unionfind.weightedquickunion;
 
-import utils.IOUtils;
+import utils.StdIn;
 
 import java.io.IOException;
 
@@ -9,23 +9,22 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        WeightedQuickUnion qu = new WeightedQuickUnion(10);
+        WeightedQuickUnion qf = new WeightedQuickUnion(10);
 
-        System.out.println(String.format("Original   : %s", qu));
+        System.out.println(String.format("Original   : %s", qf));
 
-        IOUtils utils = new IOUtils();
-        String[] lines = utils.getLines("/quickfind.txt");
+        StdIn stdIn = new StdIn();
+        stdIn.init("/quickfind.txt");
 
-        int[] edges;
-        for(String line: lines) {
-            edges = utils.parseLine(line);
+        while (!stdIn.isEmpty()) {
+            Integer[] line = stdIn.readIntegers();
 
-            qu.union(edges[0], edges[1]);
-            System.out.println(String.format("union(%d, %d): %s", edges[0], edges[1], qu));
+            qf.union(line[0], line[1]);
+            System.out.println(String.format("union(%d, %d): %s", line[0], line[1], qf));
         }
 
-        System.out.println(String.format("How many components: %d", qu.count()));
-        System.out.println(String.format("Which component for 2: %d", qu.find(2)));
-        System.out.println(String.format("Is 1 connected to 4: %b", qu.connected(1, 4)));
+        System.out.println(String.format("How many components: %d", qf.count()));
+        System.out.println(String.format("Which component for 2: %d", qf.find(2)));
+        System.out.println(String.format("Is 1 connected to 4: %b", qf.connected(1, 4)));
     }
 }

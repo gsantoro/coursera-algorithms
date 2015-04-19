@@ -1,6 +1,6 @@
 package unionfind.quickfind;
 
-import utils.IOUtils;
+import utils.StdIn;
 
 import java.io.IOException;
 
@@ -13,15 +13,14 @@ public class Main {
 
         System.out.println(String.format("Original   : %s", qf));
 
-        IOUtils utils = new IOUtils();
-        String[] lines = utils.getLines("/quickfind.txt");
+        StdIn stdIn = new StdIn();
+        stdIn.init("/quickfind.txt");
 
-        int[] edges;
-        for(String line: lines) {
-            edges = utils.parseLine(line);
+        while (!stdIn.isEmpty()) {
+            Integer[] line = stdIn.readIntegers();
 
-            qf.union(edges[0], edges[1]);
-            System.out.println(String.format("union(%d, %d): %s", edges[0], edges[1], qf));
+            qf.union(line[0], line[1]);
+            System.out.println(String.format("union(%d, %d): %s", line[0], line[1], qf));
         }
 
         System.out.println(String.format("How many components: %d", qf.count()));
