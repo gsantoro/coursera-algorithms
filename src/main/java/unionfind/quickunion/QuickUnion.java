@@ -1,4 +1,4 @@
-package unionfind;
+package unionfind.quickunion;
 
 /**
  * Created by gsantoro on 16/04/15.
