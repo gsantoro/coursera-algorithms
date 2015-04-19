@@ -1,11 +1,11 @@
 package unionfind.weightedquickunion;
 
-import unionfind.AbstractQuickFind;
+import unionfind.AbstractUnionFind;
 
 /**
  * Created by gsantoro on 18/04/15.
  */
-public class WeightedQuickUnion extends AbstractQuickFind {
+public class WeightedQuickUnion extends AbstractUnionFind {
     protected int[] weight;
 
     public WeightedQuickUnion(int n) {

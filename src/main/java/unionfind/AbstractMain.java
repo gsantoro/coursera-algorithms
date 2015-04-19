@@ -8,7 +8,7 @@ import java.io.IOException;
  * Created by gsantoro on 19/04/15.
  */
 public class AbstractMain {
-    public void test(AbstractQuickFind qf) throws IOException {
+    public void test(AbstractUnionFind qf) throws IOException {
         System.out.println(String.format("Original   : %s", qf));
 
         StdIn stdIn = new StdIn();

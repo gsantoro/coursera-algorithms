@@ -3,7 +3,7 @@ package unionfind;
 /**
  * Created by gsantoro on 19/04/15.
  */
-public abstract class AbstractQuickFind {
+public abstract class AbstractUnionFind {
     protected int[] data;
 
     public abstract boolean connected(int p, int q);

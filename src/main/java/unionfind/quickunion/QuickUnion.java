@@ -1,11 +1,11 @@
 package unionfind.quickunion;
 
-import unionfind.AbstractQuickFind;
+import unionfind.AbstractUnionFind;
 
 /**
  * Created by gsantoro on 16/04/15.
  */
-public class QuickUnion extends AbstractQuickFind {
+public class QuickUnion extends AbstractUnionFind {
     public QuickUnion(int n) {
         data = new int[n];
 
