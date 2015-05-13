@@ -41,7 +41,7 @@ public class StdIn {
 
         Integer[] result = new Integer[parts.length];
 
-        for (int i=0; i < parts.length; i++) {
+        for (int i = 0; i < parts.length; i++) {
             result[i] = Integer.parseInt(parts[i]);
         }
 

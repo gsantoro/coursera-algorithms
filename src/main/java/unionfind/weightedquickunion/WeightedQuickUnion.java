@@ -39,8 +39,7 @@ public class WeightedQuickUnion extends AbstractUnionFind {
         if (weight[pr] <= weight[qr]) {
             data[pr] = qr;
             weight[qr] += weight[pr];
-        }
-        else {
+        } else {
             data[qr] = pr;
             weight[pr] += weight[qr];
         }
