@@ -15,10 +15,10 @@ public class AbstractMain {
         stdIn.init("/quickfind.txt");
 
         while (!stdIn.isEmpty()) {
-            Integer[] line = stdIn.readIntegers();
+            Integer[] integers = stdIn.readIntegers();
 
-            qf.union(line[0], line[1]);
-            System.out.println(String.format("union(%d, %d): %s", line[0], line[1], qf));
+            qf.union(integers[0], integers[1]);
+            System.out.println(String.format("union(%d, %d): %s", integers[0], integers[1], qf));
         }
 
         System.out.println(String.format("How many components: %d", qf.count()));
