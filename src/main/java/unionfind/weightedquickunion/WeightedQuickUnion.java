@@ -1,11 +1,21 @@
 package unionfind.weightedquickunion;
 
+import unionfind.AbstractMain;
 import unionfind.AbstractUnionFind;
+
+import java.io.IOException;
 
 /**
  * Created by gsantoro on 18/04/15.
  */
 public class WeightedQuickUnion extends AbstractUnionFind {
+    public static void main(String[] args) throws IOException {
+        WeightedQuickUnion qf = new WeightedQuickUnion(10);
+
+        AbstractMain main = new AbstractMain();
+        main.test(qf);
+    }
+
     protected int[] weight;
 
     public WeightedQuickUnion(int n) {

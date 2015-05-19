@@ -1,11 +1,21 @@
 package unionfind.quickunion;
 
+import unionfind.AbstractMain;
 import unionfind.AbstractUnionFind;
+
+import java.io.IOException;
 
 /**
  * Created by gsantoro on 16/04/15.
  */
 public class QuickUnion extends AbstractUnionFind {
+    public static void main(String[] args) throws IOException {
+        QuickUnion qf = new QuickUnion(10);
+
+        AbstractMain main = new AbstractMain();
+        main.test(qf);
+    }
+
     public QuickUnion(int n) {
         data = new int[n];
 
